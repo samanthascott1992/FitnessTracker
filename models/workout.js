@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = Mongoose.Schema;
+const Schema = mongoose.Schema;
 const workoutSchema = new Schema({
 day: {
 type: Date,
