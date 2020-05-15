@@ -13,10 +13,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/workout", {
-    useNewUrlParser: true,
-    useFindAndModify: false
-});
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb:/localhost/workout";
+
+mongoose.connect(MONGODB_URI);
 
 // routes
 
@@ -27,22 +26,3 @@ app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });
 
-// HEROKU DEPLOYMENT
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-// Connect to the Mongo DB
-const options = {
-    useNewUrlParser: true,
-    reconnectTries: 100,
-    reconnectInterval: 500,
-    poolSize: 10,
-    bufferMaxEntries: 0
-};
-
-mongoose.connect(MONGODB_URI, options).then(
-    () => {
-        console.log("connected to mongoDB")},
-        (err)=> {
-            console.log("err",err);
-        }
-);
