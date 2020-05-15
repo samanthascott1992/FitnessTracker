@@ -31,7 +31,15 @@ app.listen(PORT, () => {
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI).then(
+const options = {
+    useNewUrlParser: true,
+    reconnectTries: 100,
+    reconnectInterval: 500,
+    poolSize: 10,
+    bufferMaxEntries: 0
+};
+
+mongoose.connect(MONGODB_URI, options).then(
     () => {
         console.log("connected to mongoDB")},
         (err)=> {
