@@ -12,7 +12,7 @@ router.post("/api/workouts", (req, res) => {
 
 router.get("/api/workouts", (req, res) => {
 
-  Workout.find({})
+  Workout.find()
 
     .then(dbWorkouts => { res.json(dbWorkouts) })
 
