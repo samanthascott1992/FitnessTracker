@@ -8,21 +8,27 @@ const app = express();
 
 app.use(logger("dev"));
 
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb:/localhost/workout";
-
+// HEROKU DEPLOYMENT
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 mongoose.connect(MONGODB_URI);
 
-// routes
 
-app.use(require("./routes/api.js"));
-app.use(require("./routes/view.js"));
+// mongoose.connect("mongodb://localhost/workout",{
+
+//   useNewUrlParser: true,
+//   useFindAndModify: false
+
+// });
+
+app.use(require("./routes/api"));
+app.use(require("./routes/view"));
 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
-});
 
+  console.log(`App running on port ${PORT}!`);
+});
