@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // HEROKU DEPLOYMENT
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI);
 
 
