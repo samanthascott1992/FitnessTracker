@@ -18,46 +18,34 @@ required: "Enter an exercise type"
 },
 
 name: {
-
 type: String,
 trim: true,
 required: "Enter an exercise name"
-
 },
 
 duration: {
-
 type: Number,
 required: "Enter exercise duration"
-
 },
 
 weight: {
-
 type: Number,
-required: "Enter weight"
-
+// required: "Enter weight"
 },
 
 reps: {
-
 type: Number,
-required: "Enter number of reps"
-
+// required: "Enter number of reps"
 },
 
 sets: {
-
 type: Number,
-required: "Enter number of sets"
-
+// required: "Enter number of sets"
 },
 
 distance: {
-
 type: Number,
-required: "Enter distance"
-
+// required: "Enter distance"
 }
 
 }
